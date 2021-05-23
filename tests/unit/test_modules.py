@@ -1,9 +1,7 @@
 import pytest
-
-from tests.helpers.runif import RunIf
-
 from torchtext.datasets import WikiText2
 
+from tests.helpers.runif import RunIf
 
 
 def test_something1():
@@ -22,8 +20,5 @@ def test_something3(arg1: float):
     assert arg1 > 0
 
 
-
-
 if __name__ == "__main__":
     print(WikiText2)
-    

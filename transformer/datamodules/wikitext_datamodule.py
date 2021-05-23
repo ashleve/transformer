@@ -2,6 +2,7 @@ from typing import Optional, Tuple
 
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import DataLoader, Dataset
+
 from transformer.datamodules.datasets.wikitext_dataset import WikiTextDataset, generate_vocabulary
 
 
@@ -14,7 +15,7 @@ class WikiTextDataModule(LightningDataModule):
         batch_size: int = 64,
         seq_length: int = 256,
         num_workers: int = 0,
-        pin_memory: bool = False
+        pin_memory: bool = False,
     ):
         super().__init__()
 
@@ -41,10 +42,15 @@ class WikiTextDataModule(LightningDataModule):
     def setup(self, stage: Optional[str] = None):
         """Load data. Set variables: self.data_train, self.data_val, self.data_test."""
         self.vocab = generate_vocabulary(data_dir=self.data_dir)
-        self.data_train = WikiTextDataset(self.data_dir, split="train", vocab=self.vocab, seq_length=self.seq_length)
-        self.data_val = WikiTextDataset(self.data_dir, split="valid", vocab=self.vocab, seq_length=self.seq_length)
-        self.data_test = WikiTextDataset(self.data_dir, split="test", vocab=self.vocab, seq_length=self.seq_length)
-
+        self.data_train = WikiTextDataset(
+            self.data_dir, split="train", vocab=self.vocab, seq_length=self.seq_length
+        )
+        self.data_val = WikiTextDataset(
+            self.data_dir, split="valid", vocab=self.vocab, seq_length=self.seq_length
+        )
+        self.data_test = WikiTextDataset(
+            self.data_dir, split="test", vocab=self.vocab, seq_length=self.seq_length
+        )
 
     def train_dataloader(self):
         return DataLoader(
