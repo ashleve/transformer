@@ -2,6 +2,9 @@ import pytest
 
 from tests.helpers.runif import RunIf
 
+from torchtext.datasets import WikiText2
+
+
 
 def test_something1():
     """Some test description."""
@@ -19,8 +22,8 @@ def test_something3(arg1: float):
     assert arg1 > 0
 
 
-# use RunIf to skip execution of some tests, e.g. when not on windows or when no gpus are available
-@RunIf(skip_windows=True, min_gpus=1)
-def test_something4():
-    """Some test description."""
-    assert True is True
+
+
+if __name__ == "__main__":
+    print(WikiText2)
+    
