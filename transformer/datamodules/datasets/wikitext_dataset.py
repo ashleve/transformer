@@ -9,7 +9,7 @@ from torchtext.vocab import Vocab
 
 
 def generate_vocabulary(data_dir="data/"):
-    raw_text_iter = WikiText2(root=os.join(data_dir, "wikitext"), split="train")
+    raw_text_iter = WikiText2(root=os.path.join(data_dir, "wikitext"), split="train")
     tokenizer = get_tokenizer("basic_english")
     counter = Counter()
     for x in raw_text_iter:
@@ -29,7 +29,7 @@ class WikiTextDataset(Dataset):
         self.seq_len = seq_len
         self.tokenizer = get_tokenizer("basic_english")
 
-        data_iter = WikiText2(root=os.join(data_dir, "wikitext"), split=split)
+        data_iter = WikiText2(root=os.path.join(data_dir, "wikitext"), split=split)
         self.train_data = self.data_process(data_iter)
 
     def data_process(self, raw_text_iter):

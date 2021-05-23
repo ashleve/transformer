@@ -13,7 +13,7 @@ class WikiTextDataModule(LightningDataModule):
         self,
         data_dir: str = "data/",
         batch_size: int = 64,
-        seq_length: int = 256,
+        seq_len: int = 256,
         num_workers: int = 0,
         pin_memory: bool = False,
     ):
@@ -21,7 +21,7 @@ class WikiTextDataModule(LightningDataModule):
 
         self.data_dir = data_dir
         self.batch_size = batch_size
-        self.seq_length = seq_length
+        self.seq_len = seq_len
         self.num_workers = num_workers
         self.pin_memory = pin_memory
 
@@ -43,13 +43,13 @@ class WikiTextDataModule(LightningDataModule):
         """Load data. Set variables: self.data_train, self.data_val, self.data_test."""
         self.vocab = generate_vocabulary(data_dir=self.data_dir)
         self.data_train = WikiTextDataset(
-            self.data_dir, split="train", vocab=self.vocab, seq_length=self.seq_length
+            self.data_dir, split="train", vocab=self.vocab, seq_len=self.seq_len
         )
         self.data_val = WikiTextDataset(
-            self.data_dir, split="valid", vocab=self.vocab, seq_length=self.seq_length
+            self.data_dir, split="valid", vocab=self.vocab, seq_len=self.seq_len
         )
         self.data_test = WikiTextDataset(
-            self.data_dir, split="test", vocab=self.vocab, seq_length=self.seq_length
+            self.data_dir, split="test", vocab=self.vocab, seq_len=self.seq_len
         )
 
     def train_dataloader(self):
