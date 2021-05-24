@@ -1,4 +1,4 @@
-from typing import Optional, Tuple
+from typing import Optional
 
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import DataLoader, Dataset
@@ -13,9 +13,10 @@ class WikiTextDataModule(LightningDataModule):
         self,
         data_dir: str = "data/",
         batch_size: int = 64,
-        seq_len: int = 256,
+        seq_len: int = 30,
         num_workers: int = 0,
         pin_memory: bool = False,
+        drop_last: bool = False,
     ):
         super().__init__()
 
@@ -24,6 +25,7 @@ class WikiTextDataModule(LightningDataModule):
         self.seq_len = seq_len
         self.num_workers = num_workers
         self.pin_memory = pin_memory
+        self.drop_last = drop_last
 
         self.data_train: Optional[Dataset] = None
         self.data_val: Optional[Dataset] = None
@@ -34,8 +36,7 @@ class WikiTextDataModule(LightningDataModule):
         return 10
 
     def prepare_data(self):
-        """Download data if needed. This method is called only from a single GPU.
-        Do not use it to assign state (self.x = y)."""
+        """Download data if needed."""
         # WikiTextDataset(self.data_dir, )
         # WikiTextDataset(self.data_dir, )
 
@@ -58,6 +59,7 @@ class WikiTextDataModule(LightningDataModule):
             batch_size=self.batch_size,
             num_workers=self.num_workers,
             pin_memory=self.pin_memory,
+            drop_last=self.drop_last,
             shuffle=True,
         )
 
@@ -67,6 +69,7 @@ class WikiTextDataModule(LightningDataModule):
             batch_size=self.batch_size,
             num_workers=self.num_workers,
             pin_memory=self.pin_memory,
+            drop_last=self.drop_last,
             shuffle=False,
         )
 
@@ -76,5 +79,6 @@ class WikiTextDataModule(LightningDataModule):
             batch_size=self.batch_size,
             num_workers=self.num_workers,
             pin_memory=self.pin_memory,
+            drop_last=self.drop_last,
             shuffle=False,
         )

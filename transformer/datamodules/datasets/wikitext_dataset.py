@@ -20,7 +20,7 @@ def generate_vocabulary(data_dir="data/"):
 class WikiTextDataset(Dataset):
     """Wikipedia Language Modelling."""
 
-    def __init__(self, data_dir, split, vocab, seq_len=512):
+    def __init__(self, data_dir, split, vocab, seq_len=50):
         super().__init__()
 
         self.data_dir = data_dir
@@ -41,7 +41,9 @@ class WikiTextDataset(Dataset):
         return torch.cat((data))
 
     def __getitem__(self, index):
-        return self.train_data[index * self.seq_len : (index + 1) * self.seq_len]
+        data = self.train_data[index * self.seq_len : (index + 1) * self.seq_len]
+        target = self.train_data[(index + 1) * self.seq_len : (index + 2) * self.seq_len]
+        return data, target
 
     def __len__(self):
-        return len(self.train_data) // self.seq_len
+        return len(self.train_data) // self.seq_len - 1
