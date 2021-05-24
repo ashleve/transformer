@@ -31,10 +31,6 @@ class WikiTextDataModule(LightningDataModule):
         self.data_val: Optional[Dataset] = None
         self.data_test: Optional[Dataset] = None
 
-    @property
-    def num_classes(self) -> int:
-        return 10
-
     def prepare_data(self):
         """Download data if needed."""
         # WikiTextDataset(self.data_dir, )

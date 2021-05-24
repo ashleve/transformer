@@ -4,9 +4,9 @@
 # from pytorch_lightning import LightningModule
 # from src.models.modules.simple_dense_net import SimpleDenseNet
 # from torchmetrics.classification.accuracy import Accuracy
+from torch.nn import Transformer
 
-
-# class MNISTLitModel(LightningModule):
+# class WikiTextTransformerModel(LightningModule):
 #     """
 #     Example of LightningModule for MNIST classification.
 

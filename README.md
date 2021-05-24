@@ -6,13 +6,16 @@
 <a href="https://pytorchlightning.ai/"><img alt="Lightning" src="https://img.shields.io/badge/-Lightning-792ee5"></a>
 <a href="https://hydra.cc/"><img alt="Config: Hydra" src="https://img.shields.io/badge/Config-Hydra-89b8cd"></a>
 <a href="https://github.com/ashleve/lightning-hydra-template"><img alt="Template" src="https://img.shields.io/badge/-Lightning--Hydra--Template-017F2F?style=flat&logo=github&labelColor=gray"></a><br>
-[![Paper](http://img.shields.io/badge/paper-arxiv.1001.2234-B31B1B.svg)](https://www.nature.com/articles/nature14539)
+[![Paper](http://img.shields.io/badge/paper-arxiv.1706.03762-B31B1B.svg)](https://arxiv.org/pdf/1706.03762v5.pdf)
 [![Conference](http://img.shields.io/badge/AnyConference-year-4b44ce.svg)](https://papers.nips.cc/paper/2020)
 
 </div>
 
 ## Description
 Reproducing transformer architecture.
+Contains 2 models:
+- `WikiTextTransformerModel` - transformer writter from scratch
+- `WikiTextTransformerPytorchModel` - transformer written with `nn.Transformer` pytorch modules
 
 ## How to run
 Install dependencies
