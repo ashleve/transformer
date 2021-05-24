@@ -14,10 +14,11 @@ def generate_vocabulary(data_dir="data/"):
     counter = Counter()
     for x in raw_text_iter:
         counter.update(tokenizer(x))
+    # vocab takes frequencies and generates unique numbers
     return Vocab(counter)
 
 
-class WikiTextDataset(Dataset):
+class Wikitext2Dataset(Dataset):
     """Wikipedia Language Modelling."""
 
     def __init__(self, data_dir, split, vocab, seq_len=50):

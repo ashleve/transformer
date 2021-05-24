@@ -3,10 +3,10 @@ from typing import Optional
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import DataLoader, Dataset
 
-from transformer.datamodules.datasets.wikitext_dataset import WikiTextDataset, generate_vocabulary
+from transformer.datamodules.datasets.wikitext_dataset import Wikitext2Dataset, generate_vocabulary
 
 
-class WikiTextDataModule(LightningDataModule):
+class Wikitext2DataModule(LightningDataModule):
     """Wikipedia Language Modelling."""
 
     def __init__(
@@ -33,19 +33,19 @@ class WikiTextDataModule(LightningDataModule):
 
     def prepare_data(self):
         """Download data if needed."""
-        # WikiTextDataset(self.data_dir, )
-        # WikiTextDataset(self.data_dir, )
+        # Wikitext2Dataset(self.data_dir, )
+        # Wikitext2Dataset(self.data_dir, )
 
     def setup(self, stage: Optional[str] = None):
         """Load data. Set variables: self.data_train, self.data_val, self.data_test."""
         self.vocab = generate_vocabulary(data_dir=self.data_dir)
-        self.data_train = WikiTextDataset(
+        self.data_train = Wikitext2Dataset(
             self.data_dir, split="train", vocab=self.vocab, seq_len=self.seq_len
         )
-        self.data_val = WikiTextDataset(
+        self.data_val = Wikitext2Dataset(
             self.data_dir, split="valid", vocab=self.vocab, seq_len=self.seq_len
         )
-        self.data_test = WikiTextDataset(
+        self.data_test = Wikitext2Dataset(
             self.data_dir, split="test", vocab=self.vocab, seq_len=self.seq_len
         )
 

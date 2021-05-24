@@ -2,12 +2,12 @@ import pytest
 import torch
 
 from tests.helpers.runif import RunIf
-from transformer.datamodules.wikitext_datamodule import WikiTextDataModule
+from transformer.datamodules.wikitext_datamodule import Wikitext2DataModule
 
 
 @pytest.mark.parametrize("seq_len", [30, 100])
 def test_wikitext_datamodule(seq_len, batch_size=8):
-    datamodule = WikiTextDataModule(
+    datamodule = Wikitext2DataModule(
         data_dir="data/", seq_len=seq_len, batch_size=batch_size, drop_last=True
     )
     datamodule.prepare_data()

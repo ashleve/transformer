@@ -12,10 +12,11 @@
 </div>
 
 ## Description
-Reproducing transformer architecture.
+Reproducing transformer architecture. <br>
+Language modelling with Wikitext-2 dataset. <br>
 Contains 2 models:
-- `WikiTextTransformerModel` - transformer writter from scratch
-- `WikiTextTransformerPytorchModel` - transformer written with `nn.Transformer` pytorch modules
+- `Transformer` - transformer writter from scratch
+- `TransformerPytorch` - transformer written with `nn.Transformer` pytorch modules
 
 ## How to run
 Install dependencies

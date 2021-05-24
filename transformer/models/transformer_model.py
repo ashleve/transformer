@@ -6,7 +6,7 @@
 # from torchmetrics.classification.accuracy import Accuracy
 from torch.nn import Transformer
 
-# class WikiTextTransformerModel(LightningModule):
+# class Transformer(LightningModule):
 #     """
 #     Example of LightningModule for MNIST classification.
 
